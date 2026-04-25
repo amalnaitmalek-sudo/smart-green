@@ -1,0 +1,186 @@
+/* ── Register page overrides ───────────────────────────────── */
+
+/* Right panel: allow scroll but keep compact */
+.reg-right {
+  padding: 16px 40px;
+  overflow-y: auto;
+}
+
+/* Smaller form box */
+.reg-box {
+  max-width: 500px;
+  padding: 28px 32px;
+}
+
+/* Compact header */
+.reg-box .lb-header {
+  margin-bottom: 14px;
+}
+
+.reg-box .lb-header h2 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.reg-box .lb-header p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Compact field groups */
+.reg-box .field-group {
+  margin-bottom: 10px;
+}
+
+.reg-box label {
+  font-size: 0.72rem;
+  margin-bottom: 5px;
+}
+
+/* Smaller inputs */
+.reg-box .glass-input {
+  height: 40px;
+  font-size: 0.82rem;
+  padding: 0 12px 0 36px;
+}
+
+.reg-box .field-icon {
+  font-size: 0.78rem;
+  left: 12px;
+}
+
+.reg-box .eye-toggle {
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+}
+
+/* Two-column field row */
+.field-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Select styling */
+.glass-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.35)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px !important;
+}
+
+.glass-select option {
+  background: #0d1540;
+  color: white;
+}
+
+/* Required star */
+.req {
+  color: var(--accent-teal);
+  font-size: 0.7rem;
+  margin-left: 2px;
+}
+
+/* Password strength bar */
+.pwd-strength-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px;
+  margin-top: -6px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+
+.pwd-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 100px;
+  transition: width 0.4s ease, background 0.4s ease;
+  background: var(--accent-blue);
+}
+
+.pwd-hint {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+/* Terms row */
+.terms-row {
+  margin-bottom: 10px;
+}
+
+.terms-row .check-label {
+  font-size: 0.73rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Compact submit button */
+.reg-box .submit-btn {
+  height: 44px;
+  font-size: 0.88rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1a6dff, #4d90ff);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4px 20px rgba(26,109,255,0.35);
+}
+
+.reg-box .submit-btn:hover {
+  background: linear-gradient(135deg, #2478ff, #5c9dff);
+  box-shadow: 0 8px 28px rgba(26,109,255,0.5);
+  transform: translateY(-2px);
+}
+
+/* Alert / Success banners */
+.form-alert, .form-success {
+  padding: 9px 13px;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  border-radius: 10px;
+}
+
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 214, 143, 0.08);
+  border: 1px solid rgba(0, 214, 143, 0.25);
+  color: var(--accent-teal);
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-success i { font-size: 0.95rem; flex-shrink: 0; }
+
+/* Footer links */
+.reg-box .lb-footer {
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.reg-box .lb-footer p {
+  font-size: 0.77rem;
+}
+
+/* Security badge */
+.reg-right .security-badge {
+  font-size: 0.68rem;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .field-row-2  { grid-template-columns: 1fr; }
+  .reg-right    { padding: 20px 16px; }
+  .reg-box      { padding: 24px 20px; }
+}

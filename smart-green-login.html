@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECO² ENSIT — Bilan Carbone Institutionnel</title>
+  <meta name="description"
+    content="ECO² — Plateforme de calcul et de suivi du bilan carbone de l'ENSIT selon le Protocole GHG International — Scopes 1, 2 et 3.">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="smart-green-login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="login-page">
+
+  <!-- ─── Animated Background ──────────────────────────── -->
+  <div class="bg-glow glow-top-right"></div>
+  <div class="bg-glow glow-bottom-left"></div>
+  <div class="bg-grid"></div>
+
+  <!-- ─── Split Layout ─────────────────────────────────── -->
+  <div class="login-split">
+
+    <!-- LEFT — Branding Panel -->
+    <div class="login-left">
+      <div class="login-left-inner">
+
+        <div class="brand-area">
+          <div class="logo-mark">
+            <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lgLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00d68f;stop-opacity:0.13"/>
+                  <stop offset="100%" style="stop-color:#1a6dff;stop-opacity:0.07"/>
+                </linearGradient>
+              </defs>
+              <!-- Dashed orbit ring (carbon cycle) -->
+              <circle cx="28" cy="26" r="23" fill="none" stroke="rgba(26,109,255,0.28)" stroke-width="1" stroke-dasharray="3.5 3"/>
+              <!-- Leaf fill -->
+              <path d="M28 4 C44 12,45 24,28 48 C11 24,12 12,28 4Z" fill="url(#lgLeaf)"/>
+              <!-- Leaf outline -->
+              <path d="M28 4 C44 12,45 24,28 48 C11 24,12 12,28 4Z" fill="none" stroke="#00d68f" stroke-width="1.2" opacity="0.6"/>
+              <!-- Main vein -->
+              <line x1="28" y1="4" x2="28" y2="48" stroke="#00d68f" stroke-width="1" opacity="0.45"/>
+              <!-- Right veins -->
+              <line x1="28" y1="15" x2="40" y2="21" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="24" x2="43" y2="28" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="33" x2="40" y2="37" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <!-- Left veins -->
+              <line x1="28" y1="15" x2="16" y2="21" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="24" x2="13" y2="28" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="33" x2="16" y2="37" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
+              <!-- Green data nodes (measurement points) -->
+              <circle cx="28" cy="4"  r="2.5" fill="#00d68f" opacity="0.95"/>
+              <circle cx="28" cy="15" r="2"   fill="#00d68f" opacity="0.9"/>
+              <circle cx="28" cy="24" r="2"   fill="#00d68f" opacity="0.9"/>
+              <circle cx="28" cy="33" r="2"   fill="#00d68f" opacity="0.9"/>
+              <circle cx="28" cy="48" r="1.8" fill="#00d68f" opacity="0.7"/>
+              <circle cx="40" cy="21" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <circle cx="43" cy="28" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <circle cx="40" cy="37" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <circle cx="16" cy="21" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <circle cx="13" cy="28" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <circle cx="16" cy="37" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <!-- Amber orbit nodes (Scope 3 / indirect sources) -->
+              <circle cx="44.3" cy="9.7"  r="2.8" fill="#f59e0b" opacity="0.9"/>
+              <circle cx="11.7" cy="9.7"  r="2.8" fill="#f59e0b" opacity="0.9"/>
+              <circle cx="44.3" cy="42.3" r="2.8" fill="#f59e0b" opacity="0.9"/>
+              <circle cx="11.7" cy="42.3" r="2.8" fill="#f59e0b" opacity="0.9"/>
+              <!-- Dashed connections: indirect sources → leaf -->
+              <line x1="44.3" y1="9.7"  x2="40" y2="21" stroke="#f59e0b" stroke-width="0.7" opacity="0.3" stroke-dasharray="2.5 2"/>
+              <line x1="11.7" y1="9.7"  x2="16" y2="21" stroke="#f59e0b" stroke-width="0.7" opacity="0.3" stroke-dasharray="2.5 2"/>
+              <line x1="44.3" y1="42.3" x2="40" y2="37" stroke="#f59e0b" stroke-width="0.7" opacity="0.3" stroke-dasharray="2.5 2"/>
+              <line x1="11.7" y1="42.3" x2="16" y2="37" stroke="#f59e0b" stroke-width="0.7" opacity="0.3" stroke-dasharray="2.5 2"/>
+              <!-- Earth arc (global grounding) -->
+              <path d="M5 53 Q28 58 51 53" fill="none" stroke="#1a6dff" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+              <path d="M10 55.5 Q28 60 46 55.5" fill="none" stroke="#1a6dff" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-name">
+            ECO<span>²</span>
+            <span class="brand-tag">ENSIT</span>
+          </div>
+        </div>
+
+        <div class="left-headline">
+          <h1>
+            Calculer.<br>
+            Analyser.<br>
+            <span class="hl-accent">Décarboner.</span>
+          </h1>
+          <p>ECO² est l'outil officiel de calcul et de pilotage du bilan carbone de l'École Nationale Supérieure
+            d'Ingénieurs de Tunis, conforme au Protocole GHG International (Scopes 1, 2 &amp; 3).</p>
+        </div>
+
+        <div class="left-stats">
+          <div class="ls-item">
+            <strong>1 420</strong>
+            <span>tCO₂e / an</span>
+          </div>
+          <div class="ls-divider"></div>
+          <div class="ls-item">
+            <strong>8 Bâtiments</strong>
+            <span>Surveillés</span>
+          </div>
+          <div class="ls-divider"></div>
+          <div class="ls-item">
+            <strong>Scopes 1·2·3</strong>
+            <span>GHG Protocol</span>
+          </div>
+        </div>
+
+        <div class="left-features">
+          <div class="lf-row">
+            <span class="lf-dot blue"></span>
+            <span>Suivi des émissions Scopes 1, 2 &amp; 3 de l'ENSIT</span>
+          </div>
+          <div class="lf-row">
+            <span class="lf-dot teal"></span>
+            <span>Simulation IA de scénarios de décarbonation</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Decorative city visual -->
+      <div class="left-visual">
+        <div class="mini-city">
+          <div class="mc-b b1"></div>
+          <div class="mc-b b2"></div>
+          <div class="mc-b b3"></div>
+          <div class="mc-b b4"></div>
+          <div class="mc-b b5"></div>
+          <div class="mc-glow"></div>
+          <div class="mc-ring"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — Login Form -->
+    <div class="login-right">
+      <div class="login-box glass-card">
+
+        <div class="lb-header">
+          <h2>Espace ECO²</h2>
+          <p>Connectez-vous pour accéder au tableau de bord de bilan carbone de l'ENSIT.</p>
+        </div>
+
+        <!-- Error alert (hidden by default) -->
+        <div class="form-alert" id="formAlert" style="display:none;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="alertMessage">Veuillez remplir tous les champs.</span>
+        </div>
+
+        <form id="loginForm" novalidate>
+
+          <div class="field-group">
+            <label for="email">Adresse Email</label>
+            <div class="field-wrapper">
+              <i class="fa-solid fa-envelope field-icon"></i>
+              <input type="email" id="email" class="glass-input" placeholder="prenom.nom@ensit.tn" autocomplete="email"
+                required>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">
+              Mot de Passe
+              <a href="#" class="forgot-link">Oublié ?</a>
+            </label>
+            <div class="field-wrapper">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="password" class="glass-input" placeholder="••••••••"
+                autocomplete="current-password" required>
+              <button type="button" class="eye-toggle" id="eyeToggle" tabindex="-1">
+                <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label class="check-label" for="rememberMe">
+              <input type="checkbox" id="rememberMe">
+              <span class="custom-checkbox"></span>
+              Se souvenir de moi
+            </label>
+          </div>
+
+          <button type="submit" class="glass-btn submit-btn" id="submitBtn">
+            <span id="btnText">Se connecter</span>
+            <i class="fa-solid fa-arrow-right" id="btnIcon"></i>
+          </button>
+
+        </form>
+
+        <div class="lb-footer">
+          <p>Accès réservé au personnel de l'ENSIT. <a href="register.html">Créer un compte</a></p>
+          <p class="lb-back"><a href="#"><i class="fa-solid fa-leaf"></i> ECO² </a></p>
+        </div>
+
+      </div>
+
+      <!-- Bottom badge -->
+      <div class="security-badge">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>ECO² · Accès sécurisé · ENSIT © 2026 </span>
+      </div>
+    </div>
+
+  </div><!-- /login-split -->
+
+  <script src="smart-green-login.js"></script>
+</body>
+
+</html>

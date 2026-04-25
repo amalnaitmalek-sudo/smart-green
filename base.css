@@ -1,0 +1,217 @@
+/* ============================================================
+   Smart Green ENSIT — Base Design System (Apex Style)
+   Deep Navy × Electric Blue × Eco Green
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* --- Color Palette --- */
+  --bg-deep:         #04071A;
+  --bg-surface:      #0A1033;
+  --bg-card:         #0D1440;
+  --bg-mid:          #111B52;
+
+  --accent-blue:     #1a6dff;
+  --accent-blue-2:   #4d90ff;
+  --accent-blue-glow:rgba(26, 109, 255, 0.25);
+  --accent-teal:     #00d68f;
+  --accent-teal-glow:rgba(0, 214, 143, 0.20);
+  --accent-purple:   #7B5CF0;
+
+  --text-primary:    #FFFFFF;
+  --text-secondary:  rgba(255,255,255,0.65);
+  --text-dim:        rgba(255,255,255,0.35);
+
+  /* --- Glass System --- */
+  --glass-bg:        rgba(255, 255, 255, 0.04);
+  --glass-bg-hover:  rgba(255, 255, 255, 0.08);
+  --glass-border:    rgba(255, 255, 255, 0.09);
+  --glass-border-hover: rgba(255, 255, 255, 0.18);
+  --glass-blur:      20px;
+  --glass-blur-strong: 40px;
+
+  /* --- Typography --- */
+  --font-heading:    'Syne', sans-serif;
+  --font-body:       'Inter', sans-serif;
+
+  /* --- Spacing & Shape --- */
+  --radius-sm:       10px;
+  --radius-md:       16px;
+  --radius-lg:       24px;
+  --radius-xl:       32px;
+
+  /* --- Shadows --- */
+  --shadow-card:     0 8px 32px rgba(0,0,0,0.35);
+  --shadow-glow-blue:0 0 40px rgba(26,109,255,0.3);
+  --shadow-glow-teal:0 0 40px rgba(0,214,143,0.2);
+
+  /* --- Transitions --- */
+  --transition:      all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,109,255,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,214,143,0.10) 0%, transparent 60%);
+}
+
+/* ── Glass Card ─────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-card), 0 0 60px rgba(26,109,255,0.08);
+}
+
+/* ── Glass Input ─────────────────────────────────────────────── */
+.glass-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 14px 20px;
+  transition: var(--transition);
+  outline: none;
+}
+
+.glass-input::placeholder { color: var(--text-dim); }
+
+.glass-input:focus {
+  border-color: var(--accent-blue);
+  background: rgba(26, 109, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(26,109,255,0.15);
+}
+
+/* ── Glass Button ─────────────────────────────────────────────── */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accent-blue);
+  border: none;
+  border-radius: 100px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.glass-btn:hover {
+  background: var(--accent-blue-2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(26,109,255,0.4);
+}
+
+.glass-btn.outline {
+  background: transparent;
+  border: 1px solid var(--glass-border-hover);
+  color: var(--text-primary);
+}
+
+.glass-btn.outline:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--accent-blue);
+  box-shadow: none;
+  transform: none;
+}
+
+.glass-btn.teal {
+  background: var(--accent-teal);
+  color: var(--bg-deep);
+}
+
+.glass-btn.teal:hover {
+  background: #00f5a0;
+  box-shadow: 0 12px 40px rgba(0,214,143,0.4);
+}
+
+/* ── Tag / Badge ─────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tag.blue {
+  background: rgba(26, 109, 255, 0.12);
+  color: var(--accent-blue-2);
+  border: 1px solid rgba(26,109,255,0.2);
+}
+
+.tag.teal {
+  background: rgba(0, 214, 143, 0.12);
+  color: var(--accent-teal);
+  border: 1px solid rgba(0,214,143,0.2);
+}
+
+/* ── Custom Checkbox ─────────────────────────────────────────── */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--glass-border-hover);
+  border-radius: 5px;
+  display: inline-block;
+  background: transparent;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"]:checked + .custom-checkbox {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3 4L11 1' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(26,109,255,0.3);
+  border-radius: 100px;
+}
+
+/* ── Utility ─────────────────────────────────────────────────── */
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
