@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const C = {
         blue:       '#1a6dff',
         blue2:      '#4d90ff',
-        teal:       '#00d68f',
+        teal:       '#32CD32',
         purple:     '#7B5CF0',
         orange:     '#ff7a45',
         text:       'rgba(255, 255, 255, 0.55)',
@@ -37,14 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTitle   = document.getElementById('pageTitle');
     const pageDesc    = document.getElementById('pageDesc');
 
-    const tabMeta = {
-        overview:   { title: 'Vue d\'Ensemble',            desc: 'eco² — Bilan carbone global de l\'ENSIT · Exercice 2026' },
-        scope1:     { title: 'Scope 1 — Émissions Directes', desc: 'Sources contrôlées par l\'ENSIT : chaudières, véhicules, fluides frigorigènes' },
-        scope2:     { title: 'Scope 2 — Énergie Achetée',    desc: 'Électricité achetée à la STEG — principal poste d\'émission de l\'ENSIT' },
-        scope3:     { title: 'Scope 3 — Émissions Amont & Aval', desc: 'Déplacements domicile-campus, achats, déchets et chaîne de valeur' },
-        simulation: { title: 'Simulation de Décarbonation', desc: 'eco² — Modélisation prédictive des leviers de réduction ENSIT' },
-        reports:    { title: 'Rapports Carbone eco²',        desc: 'Rapports officiels conformes au Protocole GHG International' },
-    };
+    const getTabMeta = () => ({
+        overview:   { title: i18n.getTranslation('nav-overview'),   desc: i18n.getTranslation('chart-evolution-desc') },
+        scope1:     { title: i18n.getTranslation('scope1-title'),    desc: i18n.getTranslation('scope1-desc').substring(0, 80) + '...' },
+        scope2:     { title: i18n.getTranslation('scope2-title'),    desc: i18n.getTranslation('scope2-desc').substring(0, 80) + '...' },
+        scope3:     { title: i18n.getTranslation('scope3-title'),    desc: i18n.getTranslation('scope3-desc').substring(0, 80) + '...' },
+        calculator: { title: i18n.getTranslation('nav-calculator'), desc: i18n.getTranslation('calc-desc').substring(0, 80) + '...' },
+        simulation: { title: i18n.getTranslation('nav-simulation'), desc: i18n.getTranslation('hero-desc').substring(0, 80) + '...' },
+    });
+
+    let tabMeta = getTabMeta();
 
     navItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -70,19 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tab === 'scope1') initScope1();
             if (tab === 'scope2') initScope2();
             if (tab === 'scope3') initScope3();
+            if (tab === 'calculator') initCalculator();
         });
     });
 
     // ── 2. Overview: Emissions Line Chart ─────────────────
-    const emissionsCtx = document.getElementById('emissionsChart');
+    const emissionsCtx = document.getElementById('mainEvolutionChart');
     if (emissionsCtx) {
         new Chart(emissionsCtx.getContext('2d'), {
             type: 'bar',
             data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [
                     {
-                        label: 'Émissions tCO₂e',
+                        label: 'Emissions tCO₂e',
                         data: [128, 140, 122, 155, 142, 160, 148, 135, 119, 138, 145, 130],
                         backgroundColor: grad(emissionsCtx.getContext('2d'), C.blue, '50', '20'),
                         borderColor: C.blue,
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         borderRadius: 6,
                     },
                     {
-                        label: 'Objectif',
+                        label: 'Target',
                         data: [130, 128, 126, 124, 122, 120, 118, 116, 114, 112, 110, 108],
                         type: 'line',
                         borderColor: C.teal,
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ── 3. Overview: Scope Distribution Doughnut ──────────
-    const distributionCtx = document.getElementById('distributionChart');
+    const distributionCtx = document.getElementById('overviewScopeChart');
     if (distributionCtx) {
         new Chart(distributionCtx.getContext('2d'), {
             type: 'doughnut',
@@ -152,9 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
         new Chart(ctx.getContext('2d'), {
             type: 'bar',
             data: {
-                labels: ['Chaudières\nGaz', 'Groupe\nÉlectrogène', 'Flotte\nVéhicules', 'Fluides\nFrigorigènes', 'Autres'],
+                labels: ['Gas\nBoilers', 'Emergency\nGenerator', 'Vehicle\nFleet', 'Refrigerant\nFluids', 'Others'],
                 datasets: [{
-                    label: 'Émissions Scope 1 (tCO₂e)',
+                    label: 'Scope 1 Emissions (tCO₂e)',
                     data: [142, 58, 68, 28, 16],
                     backgroundColor: [C.orange + 'cc', C.orange + '99', C.orange + '77', C.orange + '55', C.orange + '33'],
                     borderColor: C.orange,
@@ -180,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
             new Chart(gasCtx.getContext('2d'), {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun'],
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                     datasets: [{
-                        label: 'Gaz Naturel (m³)',
+                        label: 'Natural Gas (m³)',
                         data: [2100, 1950, 1600, 1100, 450, 200],
                         borderColor: C.orange,
                         backgroundColor: grad(gasCtx.getContext('2d'), C.orange, '30', '00'),
@@ -202,6 +205,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        // Fleet Chart
+        const fleetCtx = document.getElementById('fleetChart');
+        if (fleetCtx) {
+            new Chart(fleetCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Admin (Diesel)', 'Utility (Diesel)', 'Bus (Fuel)', 'Service (Gasoline)'],
+                    datasets: [{
+                        data: [450, 890, 1200, 320],
+                        backgroundColor: [C.orange, C.orange + 'cc', C.orange + '99', C.orange + '66'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Generator Chart
+        const genCtx = document.getElementById('generatorChart');
+        if (genCtx) {
+            new Chart(genCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Admin A', 'Block B', 'Labs C', 'Cafeteria', 'Workshop'],
+                    datasets: [{
+                        label: 'Liters',
+                        data: [2, 1, 4, 0, 8, 3],
+                        backgroundColor: C.orange + '88',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
     }
 
     // ── 5. Scope 2 Chart ──────────────────────────────────
@@ -214,9 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
         new Chart(ctx.getContext('2d'), {
             type: 'line',
             data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
-                    label: 'Électricité (MWh)',
+                    label: 'Gas Usage (m³)',
                     data: [410, 435, 390, 460, 420, 510, 495, 450, 380, 420, 440, 395],
                     borderColor: C.blue,
                     backgroundColor: grad(ctx.getContext('2d'), C.blue, '40', '05'),
@@ -246,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
             new Chart(bCtx.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['A (Admin)', 'B (Labs)', 'C (Cours)', 'D (Ate)'],
+                    labels: ['A (Admin)', 'B (Labs)', 'C (Classrooms)', 'D (Workshop)'],
                     datasets: [{
                         data: [120, 240, 110, 85],
                         backgroundColor: [C.blue, C.teal, C.purple, C.orange],
@@ -257,6 +303,54 @@ document.addEventListener('DOMContentLoaded', () => {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Power Peak Chart
+        const peakCtx = document.getElementById('powerPeakChart');
+        if (peakCtx) {
+            new Chart(peakCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'kVA',
+                        data: [320, 310, 340, 380, 420, 450],
+                        borderColor: C.teal,
+                        backgroundColor: grad(peakCtx.getContext('2d'), C.teal, '20', '00'),
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Lighting vs Equipment
+        const lightCtx = document.getElementById('lightingEquipmentChart');
+        if (lightCtx) {
+            new Chart(lightCtx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Lighting', 'Equipment', 'HVAC', 'Other'],
+                    datasets: [{
+                        label: 'Breakdown (%)',
+                        data: [25, 45, 20, 10],
+                        backgroundColor: [C.blue, C.teal, C.purple, C.orange],
+                        borderWidth: 0,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: { legend: { position: 'bottom' } }
                 }
             });
         }
@@ -274,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
             new Chart(transportCtx.getContext('2d'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Voiture Solo', 'Covoiturage', 'Transport Public', 'Vélo/Marche', 'Moto'],
+                    labels: ['Solo Car', 'Carpooling', 'Public Transport', 'Bike/Walk', 'Motorcycle'],
                     datasets: [{
                         data: [45, 15, 25, 10, 5],
                         backgroundColor: [C.purple, C.blue, C.teal, C.blue2, C.orange],
@@ -300,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             new Chart(wCtx.getContext('2d'), {
                 type: 'pie',
                 data: {
-                    labels: ['Recyclé', 'Composté', 'Incinéré', 'Décharge'],
+                    labels: ['Recycled', 'Composted', 'Incinerated', 'Landfill'],
                     datasets: [{
                         data: [62, 12, 18, 8],
                         backgroundColor: [C.teal, C.blue, C.purple, C.orange],
@@ -321,11 +415,57 @@ document.addEventListener('DOMContentLoaded', () => {
             new Chart(pCtx.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['Papier', 'Informatique', 'Mobilier', 'Chimie'],
+                    labels: ['Paper', 'IT', 'Furniture', 'Chemicals'],
                     datasets: [{
                         data: [24, 48, 12, 36],
                         backgroundColor: C.purple,
                         borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Staff vs Student Commuting
+        const scCtx = document.getElementById('staffCommutingChart');
+        if (scCtx) {
+            new Chart(scCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                labels: ['Students', 'Teachers', 'Admin Staff'],
+                datasets: [{
+                    label: 'tCO₂e',
+                    data: [142, 45, 12],
+                        backgroundColor: [C.purple, C.blue, C.teal],
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Water Consumption
+        const waterCtx = document.getElementById('waterConsumptionChart');
+        if (waterCtx) {
+            new Chart(waterCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'm³',
+                        data: [450, 420, 480, 510, 550, 620],
+                        borderColor: C.blue2,
+                        backgroundColor: grad(waterCtx.getContext('2d'), C.blue2, '20', '00'),
+                        fill: true,
+                        tension: 0.4
                     }]
                 },
                 options: {
@@ -342,9 +482,9 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'bar',
             indexAxis: 'y',
             data: {
-                labels: ['Déplacements\nPersonnel', 'Déplacements\nÉtudiants', 'Achats\nBiens/Services', 'Gestion\nDéchets', 'Voyages\nPro', 'Autres'],
+                labels: ['Staff\nCommuting', 'Student\nCommuting', 'Purchases\nGoods/Services', 'Waste\nManagement', 'Business\nTravel', 'Others'],
                 datasets: [{
-                    label: 'Émissions Scope 3 (tCO₂e)',
+                    label: 'Scope 3 Emissions (tCO₂e)',
                     data: [198, 142, 86, 52, 30, 18],
                     backgroundColor: [
                         C.purple + 'cc', C.purple + 'aa', C.purple + '88',
@@ -424,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         pointRadius: 3,
                     },
                     {
-                        label: 'Avec mesures',
+                        label: 'With measures',
                         data: [1420, 1320, 1220, 1100, 980],
                         borderColor: C.teal,
                         backgroundColor: grad(projCtx.getContext('2d'), C.teal, '35', '00'),
@@ -450,5 +590,158 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ── 9. Carbon Calculator Logic ────────────────────────
+    let calculatorInit = false;
+    function initCalculator() {
+        if (calculatorInit) return;
+        calculatorInit = true;
+
+        const inputs = [
+            'calc-gas', 'calc-fuel', 'calc-refrig', 
+            'calc-elec', 'calc-travel', 'calc-waste', 'calc-water'
+        ];
+
+        const factors = {
+            gas:    0.00204, // tCO2e / m3
+            fuel:   0.00268, // tCO2e / L
+            refrig: 2.088,   // tCO2e / kg (moyenne R410A)
+            elec:   0.0005,  // tCO2e / kWh
+            travel: 0.00018, // tCO2e / km
+            waste:  0.45,    // tCO2e / t
+            water:  0.0003,  // tCO2e / m3
+        };
+
+        const updateCalc = () => {
+            const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+            const s1 = (v('calc-gas') * factors.gas) + (v('calc-fuel') * factors.fuel) + (v('calc-refrig') * factors.refrig);
+            const s2 = (v('calc-elec') * factors.elec);
+            const s3 = (v('calc-travel') * factors.travel) + (v('calc-waste') * factors.waste) + (v('calc-water') * factors.water);
+            const total = s1 + s2 + s3;
+
+            document.getElementById('calc-s1-val').textContent = s1.toFixed(2) + ' t';
+            document.getElementById('calc-s2-val').textContent = s2.toFixed(2) + ' t';
+            document.getElementById('calc-s3-val').textContent = s3.toFixed(2) + ' t';
+            document.getElementById('calc-total-val').textContent = total.toFixed(2);
+        };
+
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateCalc);
+        });
+
+        document.getElementById('btn-calculate-now').addEventListener('click', updateCalc);
+        document.getElementById('btn-reset-calc').addEventListener('click', () => {
+            inputs.forEach(id => document.getElementById(id).value = 0);
+            updateCalc();
+        });
+
+        // Export Simulation (Removed as requested, but keeping PDF for general print if needed)
+        document.querySelectorAll('.export-pdf-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.print();
+            });
+        });
+
+        // Import Simulation (PDF/Excel)
+        const pdfInput = document.getElementById('file-import-pdf');
+        const excelInput = document.getElementById('file-import-excel');
+
+        const simulateImport = (filename) => {
+            alert('Analyzing document: ' + filename + '...');
+            setTimeout(() => {
+                // Simulate extracting data from an invoice
+                document.getElementById('calc-elec').value = (Math.random() * 10000 + 5000).toFixed(0);
+                document.getElementById('calc-gas').value = (Math.random() * 2000 + 500).toFixed(0);
+                updateCalc();
+                alert('Data successfully extracted from the document!');
+            }, 2000);
+        };
+
+        if (pdfInput) pdfInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) simulateImport(e.target.files[0].name);
+        });
+        if (excelInput) excelInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                const bstr = evt.target.result;
+                const wb = XLSX.read(bstr, { type: 'binary' });
+                const wsname = wb.SheetNames[0];
+                const ws = wb.Sheets[wsname];
+                const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+
+                alert('File "' + file.name + '" read successfully! Analyzing data...');
+
+                // Logique de recherche simple dans le tableur
+                data.forEach(row => {
+                    row.forEach(cell => {
+                        if (typeof cell === 'string') {
+                            const val = cell.toLowerCase();
+                            // Example: if a cell contains "Electricity" or "steg" and the next cell is a number
+                            if (val.includes('elec') || val.includes('élec') || val.includes('steg')) {
+                                const consumption = row.find(c => typeof c === 'number');
+                                if (consumption) document.getElementById('calc-elec').value = consumption;
+                            }
+                            if (val.includes('gas') || val.includes('gaz')) {
+                                const consumption = row.find(c => typeof c === 'number');
+                                if (consumption) document.getElementById('calc-gas').value = consumption;
+                            }
+                            if (val.includes('fuel') || val.includes('carburant') || val.includes('essence')) {
+                                const consumption = row.find(c => typeof c === 'number');
+                                if (consumption) document.getElementById('calc-fuel').value = consumption;
+                            }
+                        }
+                    });
+                });
+
+                updateCalc();
+                alert('Data updated from Excel file.');
+            };
+            reader.readAsBinaryString(file);
+        });
+
+        // Manual Invoice Entry
+        const btnAddInvoice = document.getElementById('btn-add-invoice');
+        if (btnAddInvoice) {
+            btnAddInvoice.addEventListener('click', () => {
+                const type = document.getElementById('invoice-type').value;
+                const usage = parseFloat(document.getElementById('invoice-usage').value) || 0;
+                
+                if (usage === 0) {
+                    alert('Please enter a valid consumption value.');
+                    return;
+                }
+
+                // Add to corresponding field
+                if (type === 'elec') document.getElementById('calc-elec').value = parseFloat(document.getElementById('calc-elec').value) + usage;
+                if (type === 'gas') document.getElementById('calc-gas').value = parseFloat(document.getElementById('calc-gas').value) + usage;
+                if (type === 'fuel') document.getElementById('calc-fuel').value = parseFloat(document.getElementById('calc-fuel').value) + usage;
+                if (type === 'water') document.getElementById('calc-water').value = parseFloat(document.getElementById('calc-water').value) + usage;
+
+                updateCalc();
+                alert('Invoice added to global calculation!');
+                
+                // Clear fields
+                document.getElementById('invoice-amount').value = '';
+                document.getElementById('invoice-usage').value = '';
+            });
+        }
+    }
+
+    // ── 10. Language Change Listener ──────────────────────
+    window.addEventListener('languageChanged', () => {
+        tabMeta = getTabMeta();
+        const activeTab = document.querySelector('.nav-menu li.active').getAttribute('data-tab');
+        if (activeTab && pageTitle) {
+            pageTitle.textContent = tabMeta[activeTab].title;
+            pageDesc.textContent  = tabMeta[activeTab].desc;
+        }
+        // Update charts with new labels if necessary
+        // For simplicity, we can reload or just update labels. 
+        // Most charts use hardcoded labels in this demo, but we could make them dynamic.
+    });
 
 });

@@ -9,12 +9,26 @@
   <link rel="stylesheet" href="smart-green-login.css">
   <link rel="stylesheet" href="register.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="i18n.js"></script>
 </head>
 <body class="login-page">
 
   <div class="bg-glow glow-top-right"></div>
   <div class="bg-glow glow-bottom-left"></div>
   <div class="bg-grid"></div>
+
+  <!-- ─── Top Header ─────────────────────────────────── -->
+  <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 20px 40px; z-index: 100; display: flex; justify-content: space-between; align-items: center;">
+    <div class="header-logo glass-card" style="padding: 10px 20px; display: flex; align-items: center; gap: 15px;">
+      <img src="ensit-logo.png" alt="ENSIT" style="height: 35px; width: auto;">
+      <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.15);"></div>
+      <span style="font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.8); letter-spacing: 1px;">ECO² ENSIT</span>
+    </div>
+    <div class="lang-switcher glass-card" onclick="toggleLanguage()" title="Switch Language">
+      <i class="fa-solid fa-globe"></i>
+      <span id="current-lang">FR</span>
+    </div>
+  </header>
 
   <div class="login-split">
 
@@ -27,31 +41,31 @@
             <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="lgLeafR" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#00d68f;stop-opacity:0.13"/>
-                  <stop offset="100%" style="stop-color:#1a6dff;stop-opacity:0.07"/>
+                  <stop offset="0%" style="stop-color:#32CD32;stop-opacity:0.2"/>
+                  <stop offset="100%" style="stop-color:#00CED1;stop-opacity:0.1"/>
                 </linearGradient>
               </defs>
-              <circle cx="28" cy="26" r="23" fill="none" stroke="rgba(26,109,255,0.28)" stroke-width="1" stroke-dasharray="3.5 3"/>
+              <circle cx="28" cy="26" r="23" fill="none" stroke="rgba(0,206,209,0.28)" stroke-width="1" stroke-dasharray="3.5 3"/>
               <path d="M28 4 C44 12,45 24,28 48 C11 24,12 12,28 4Z" fill="url(#lgLeafR)"/>
-              <path d="M28 4 C44 12,45 24,28 48 C11 24,12 12,28 4Z" fill="none" stroke="#00d68f" stroke-width="1.2" opacity="0.6"/>
-              <line x1="28" y1="4"  x2="28" y2="48" stroke="#00d68f" stroke-width="1"   opacity="0.45"/>
-              <line x1="28" y1="15" x2="40" y2="21" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <line x1="28" y1="24" x2="43" y2="28" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <line x1="28" y1="33" x2="40" y2="37" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <line x1="28" y1="15" x2="16" y2="21" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <line x1="28" y1="24" x2="13" y2="28" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <line x1="28" y1="33" x2="16" y2="37" stroke="#00d68f" stroke-width="0.8" opacity="0.5"/>
-              <circle cx="28" cy="4"  r="2.5" fill="#00d68f" opacity="0.95"/>
-              <circle cx="28" cy="15" r="2"   fill="#00d68f" opacity="0.9"/>
-              <circle cx="28" cy="24" r="2"   fill="#00d68f" opacity="0.9"/>
-              <circle cx="28" cy="33" r="2"   fill="#00d68f" opacity="0.9"/>
-              <circle cx="28" cy="48" r="1.8" fill="#00d68f" opacity="0.7"/>
-              <circle cx="40" cy="21" r="1.5" fill="#00d68f" opacity="0.85"/>
-              <circle cx="43" cy="28" r="1.5" fill="#00d68f" opacity="0.85"/>
-              <circle cx="40" cy="37" r="1.5" fill="#00d68f" opacity="0.85"/>
-              <circle cx="16" cy="21" r="1.5" fill="#00d68f" opacity="0.85"/>
-              <circle cx="13" cy="28" r="1.5" fill="#00d68f" opacity="0.85"/>
-              <circle cx="16" cy="37" r="1.5" fill="#00d68f" opacity="0.85"/>
+              <path d="M28 4 C44 12,45 24,28 48 C11 24,12 12,28 4Z" fill="none" stroke="#32CD32" stroke-width="1.2" opacity="0.6"/>
+              <line x1="28" y1="4"  x2="28" y2="48" stroke="#32CD32" stroke-width="1"   opacity="0.45"/>
+              <line x1="28" y1="15" x2="40" y2="21" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="24" x2="43" y2="28" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="33" x2="40" y2="37" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="15" x2="16" y2="21" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="24" x2="13" y2="28" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <line x1="28" y1="33" x2="16" y2="37" stroke="#32CD32" stroke-width="0.8" opacity="0.5"/>
+              <circle cx="28" cy="4"  r="2.5" fill="#32CD32" opacity="0.95"/>
+              <circle cx="28" cy="15" r="2"   fill="#32CD32" opacity="0.9"/>
+              <circle cx="28" cy="24" r="2"   fill="#32CD32" opacity="0.9"/>
+              <circle cx="28" cy="33" r="2"   fill="#32CD32" opacity="0.9"/>
+              <circle cx="28" cy="48" r="1.8" fill="#32CD32" opacity="0.7"/>
+              <circle cx="40" cy="21" r="1.5" fill="#32CD32" opacity="0.85"/>
+              <circle cx="43" cy="28" r="1.5" fill="#32CD32" opacity="0.85"/>
+              <circle cx="40" cy="37" r="1.5" fill="#32CD32" opacity="0.85"/>
+              <circle cx="16" cy="21" r="1.5" fill="#32CD32" opacity="0.85"/>
+              <circle cx="13" cy="28" r="1.5" fill="#32CD32" opacity="0.85"/>
+              <circle cx="16" cy="37" r="1.5" fill="#32CD32" opacity="0.85"/>
               <circle cx="44.3" cy="9.7"  r="2.8" fill="#f59e0b" opacity="0.9"/>
               <circle cx="11.7" cy="9.7"  r="2.8" fill="#f59e0b" opacity="0.9"/>
               <circle cx="44.3" cy="42.3" r="2.8" fill="#f59e0b" opacity="0.9"/>
@@ -125,9 +139,8 @@
     <!-- RIGHT — Register Form -->
     <div class="login-right reg-right">
       <div class="login-box reg-box glass-card">
-
         <div class="lb-header">
-          <h2>Créer un compte</h2>
+          <h2 data-i18n="register-title">Créer un compte</h2>
           <p>Renseignez vos informations institutionnelles pour demander l'accès à la plateforme ECO².</p>
         </div>
 
@@ -249,7 +262,7 @@
           </div>
 
           <button type="submit" class="glass-btn submit-btn" id="submitBtn">
-            <span id="btnText">Créer mon compte</span>
+            <span id="btnText" data-i18n="btn-register">Créer mon compte</span>
             <i class="fa-solid fa-arrow-right" id="btnIcon"></i>
           </button>
 
