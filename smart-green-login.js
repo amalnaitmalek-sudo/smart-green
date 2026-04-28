@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btnText.textContent = 'Connexion en cours...';
         btnIcon.className = 'fa-solid fa-spinner fa-spin';
 
+        const role = document.getElementById('userRole').value;
+
         // Simulate API call (replace with real auth)
         setTimeout(() => {
 
@@ -96,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btnIcon.className = 'fa-solid fa-check';
             submitBtn.style.background = 'var(--accent-teal)';
             submitBtn.style.color      = 'var(--bg-deep)';
+
+            // Store role and auth state
+            localStorage.setItem('eco2_user_role', role);
+            localStorage.setItem('eco2_authenticated', 'true');
 
             // Redirect to dashboard
             setTimeout(() => {

@@ -84,6 +84,10 @@
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                         <span data-i18n="nav-simulation">IA Simulation</span>
                     </li>
+                    <li data-tab="admin">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <span>Administration</span>
+                    </li>
                 </ul>
             </nav>
 
@@ -105,10 +109,10 @@
         <main class="main-content">
             <header class="top-nav">
                 <div class="header-branding glass-card"
-                    style="padding: 8px 15px; display: flex; align-items: center; gap: 12px; margin-right: 20px;">
-                    <img src="ensit-logo.png" alt="ENSIT" style="height: 32px; width: auto; opacity: 0.9;">
-                    <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.1);"></div>
-                    <div class="page-title-area" style="margin: 0;">
+                    style="padding: 10px 30px; display: flex; align-items: center; gap: 18px; margin-right: 25px; min-width: 280px;">
+                    <img src="ensit-logo.png" alt="ENSIT" style="height: 35px; width: auto; opacity: 0.9;">
+                    <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.12);"></div>
+                    <div class="page-title-area" style="margin: 0; flex-grow: 1;">
                         <h2 class="page-title" id="pageTitle" style="font-size: 1.1rem; margin: 0;">Vue d'Ensemble</h2>
                     </div>
                 </div>
@@ -131,7 +135,7 @@
                     <button class="icon-btn glass-card" title="Paramètres">
                         <i class="fa-solid fa-gear"></i>
                     </button>
-                    <a href="smart-green-login.html" class="logout-btn glass-card" title="Déconnexion">
+                    <a href="smart-green-login.html" class="logout-btn glass-card" title="Déconnexion" id="logoutBtn">
                         <i class="fa-solid fa-power-off"></i>
                     </a>
                 </div>
@@ -158,9 +162,7 @@
                                         data-i18n="btn-simulate">
                                         <i class="fa-solid fa-wand-magic-sparkles"></i> Simuler des Réductions
                                     </button>
-                                    <button class="glass-btn outline" data-i18n="btn-export">
-                                        <i class="fa-solid fa-file-arrow-down"></i> Exporter le Rapport
-                                    </button>
+
                                 </div>
                             </div>
                             <div class="hero-visual-db">
@@ -168,7 +170,7 @@
                                 <div class="hero-ring r2"></div>
                                 <div class="hero-ring r3"></div>
                                 <div class="hero-center">
-                                    <span class="big-num">1 420</span>
+                                    <span class="big-num">715</span>
                                     <span class="big-unit">tCO₂e/an</span>
                                 </div>
                             </div>
@@ -178,18 +180,18 @@
                         <div class="bento-item kpi glass-card">
                             <div class="kpi-icon blue"><i class="fa-solid fa-cloud-arrow-up"></i></div>
                             <div class="kpi-data">
-                                <span class="kpi-label" data-i18n="kpi-total-emissions">Émissions Totales</span>
-                                <span class="kpi-value">1 420 <small>tCO₂e</small></span>
+                                <span class="kpi-label" data-i18n="kpi-total-emissions">Émissions Totales Campus</span>
+                                <span class="kpi-value">715 <small>tCO₂e</small></span>
                                 <span class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +1.2% /
-                                    2025</span>
+                                    2024</span>
                             </div>
                         </div>
 
                         <div class="bento-item kpi glass-card">
                             <div class="kpi-icon teal"><i class="fa-solid fa-user-graduate"></i></div>
                             <div class="kpi-data">
-                                <span class="kpi-label" data-i18n="kpi-per-student">Par Étudiant</span>
-                                <span class="kpi-value">0.32 <small>tCO₂e/étud.</small></span>
+                                <span class="kpi-label" data-i18n="kpi-per-student">Émissions par Étudiant</span>
+                                <span class="kpi-value">0.56 <small>tCO₂e / étud.</small></span>
                                 <span class="kpi-trend down"><i class="fa-solid fa-arrow-trend-down"></i> -5.4%</span>
                             </div>
                         </div>
@@ -197,17 +199,17 @@
                         <div class="bento-item kpi glass-card">
                             <div class="kpi-icon purple"><i class="fa-solid fa-microscope"></i></div>
                             <div class="kpi-data">
-                                <span class="kpi-label" data-i18n="kpi-per-lab">Par Laboratoire</span>
-                                <span class="kpi-value">18.4 <small>tCO₂e/labo</small></span>
-                                <span class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +0.8%</span>
+                                <span class="kpi-label" data-i18n="kpi-per-lab">Émissions par Laboratoire</span>
+                                <span class="kpi-value">39.7 <small>tCO₂e / labo</small></span>
+                                <span class="kpi-trend info"><i class="fa-solid fa-flask"></i> 18 Entités</span>
                             </div>
                         </div>
 
                         <div class="bento-item kpi glass-card">
                             <div class="kpi-icon orange"><i class="fa-solid fa-ruler-combined"></i></div>
                             <div class="kpi-data">
-                                <span class="kpi-label" data-i18n="kpi-intensity">Intensité / m²</span>
-                                <span class="kpi-value">0.04 <small>tCO₂e/m²</small></span>
+                                <span class="kpi-label" data-i18n="kpi-intensity">Émissions par Surface</span>
+                                <span class="kpi-value">0.035 <small>tCO₂e / m²</small></span>
                                 <span class="kpi-trend down"><i class="fa-solid fa-arrow-trend-down"></i> -2.1%</span>
                             </div>
                         </div>
@@ -221,12 +223,13 @@
                                         l'ENSIT </p>
                                 </div>
                                 <div class="chart-toggles">
-                                    <span class="active" data-i18n="toggle-monthly">Mensuel</span>
-                                    <span data-i18n="toggle-weekly">Hebdo</span>
+                                    <span class="active" data-i18n="toggle-monthly">Bilan 2025 - 2027</span>
                                 </div>
                             </div>
                             <div class="canvas-wrapper">
-                                <canvas id="emissionsChart"></canvas>
+                                <div class="chart-container">
+                                    <canvas id="emissionsChart"></canvas>
+                                </div>
                             </div>
                         </div>
 
@@ -255,7 +258,7 @@
                                         <span>Scope 2</span>
                                     </div>
                                     <ul class="ss-list">
-                                        <li><strong>Électricité STEG:</strong> 582 t</li>
+                                        <li><strong>Électricité STEG:</strong> 283 t</li>
                                         <li><strong>Chauffage Urbain:</strong> 0 t</li>
                                         <li><strong>Véhicules Élec:</strong> 0 t</li>
                                     </ul>
@@ -288,7 +291,7 @@
                         <!-- Buildings Card -->
                         <div class="bento-item chart glass-card">
                             <div class="card-header">
-                                <h3 data-i18n="buildings-title">Bâtiments de l'ENSIT</h3>
+                                <h3 data-i18n="buildings-title">departement de l'ENSIT</h3>
                                 <p class="card-desc" data-i18n="buildings-desc">Classement par volume d'émissions (tCO₂e
                                     / an)</p>
                             </div>
@@ -296,7 +299,9 @@
                                 <div class="building-row">
                                     <div class="br-info">
                                         <span class="br-rank">01</span>
-                                        <span class="name">Bloc B </span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département Mécanique</span>
+                                        </div>
                                     </div>
                                     <div class="progress-track">
                                         <div class="progress-fill" style="width: 95%;"></div>
@@ -306,7 +311,9 @@
                                 <div class="building-row">
                                     <div class="br-info">
                                         <span class="br-rank">02</span>
-                                        <span class="name">Bloc A </span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département Électrique</span>
+                                        </div>
                                     </div>
                                     <div class="progress-track">
                                         <div class="progress-fill" style="width: 78%;"></div>
@@ -316,22 +323,50 @@
                                 <div class="building-row">
                                     <div class="br-info">
                                         <span class="br-rank">03</span>
-                                        <span class="name">Bâtiment</span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département Informatique</span>
+                                        </div>
                                     </div>
                                     <div class="progress-track">
-                                        <div class="progress-fill" style="width: 44%;"></div>
+                                        <div class="progress-fill" style="width: 55%;"></div>
                                     </div>
                                     <span class="val">180t</span>
                                 </div>
                                 <div class="building-row">
                                     <div class="br-info">
                                         <span class="br-rank">04</span>
-                                        <span class="name">Bâtiment D (Ateliers)</span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département Civil</span>
+                                        </div>
                                     </div>
                                     <div class="progress-track">
                                         <div class="progress-fill" style="width: 32%;"></div>
                                     </div>
                                     <span class="val">130t</span>
+                                </div>
+                                <div class="building-row">
+                                    <div class="br-info">
+                                        <span class="br-rank">05</span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département Industriel</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 15%;"></div>
+                                    </div>
+                                    <span class="val">45t</span>
+                                </div>
+                                <div class="building-row">
+                                    <div class="br-info">
+                                        <span class="br-rank">06</span>
+                                        <div class="dept-meta">
+                                            <span class="name">Département GMAM</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 10%;"></div>
+                                    </div>
+                                    <span class="val">13t</span>
                                 </div>
                             </div>
                         </div>
@@ -360,6 +395,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
                 <!-- ══ Scope 1 Tab ════════════════════ -->
@@ -450,19 +487,19 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Bâtiment B</td>
+                                                <td>Dép. Mécanique</td>
                                                 <td>R410A</td>
                                                 <td>4.2 kg</td>
                                                 <td><span class="tag orange">High</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Admin A</td>
+                                                <td>Dép. Informatique</td>
                                                 <td>R134a</td>
                                                 <td>1.5 kg</td>
                                                 <td><span class="tag teal">Low</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Labs C</td>
+                                                <td>Dép. Industriel</td>
                                                 <td>R404A</td>
                                                 <td>2.8 kg</td>
                                                 <td><span class="tag blue">Mid</span></td>
@@ -474,443 +511,556 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ══ Scope 2 Tab ════════════════════ -->
-            <div id="tab-scope2" class="tab-content">
-                <div class="scope-page">
-                    <div class="scope-intro glass-card">
-                        <div class="scope-intro-icon s2">
-                            <i class="fa-solid fa-bolt"></i>
+                <!-- ══ Scope 2 Tab ════════════════════ -->
+                <div id="tab-scope2" class="tab-content">
+                    <div class="scope-page">
+                        <div class="scope-intro glass-card">
+                            <div class="scope-intro-icon s2">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div class="scope-intro-text">
+                                <span class="tag blue" style="margin-bottom:12px;" data-i18n="scope2-tag">Énergie
+                                    Importée</span>
+                                <h2 data-i18n="scope2-title">Scope 2 — Énergie Achetée à la STEG</h2>
+                                <p data-i18n="scope2-desc">Émissions <strong>indirectes liées à l'achat
+                                        d'électricité</strong> auprès de la
+                                    Société Tunisienne de l'Électricité et du Gaz (STEG). Il s'agit du poste le plus
+                                    important du bilan carbone de l'ENSIT (24%), avec une consommation annuelle estimée
+                                    à
+                                    <strong>500 000 kWh</strong>, principalement dû à l'éclairage,
+                                    aux équipements de laboratoires et aux systèmes de climatisation.
+                                </p>
+                                <div class="scope-kpis">
+                                    <div class="sk-item">
+                                        <strong>283 tCO₂e</strong>
+                                        <span>Total Scope 2</span>
+                                    </div>
+                                    <div class="sk-item">
+                                        <strong>500 MWh</strong>
+                                        <span>Consommation / an</span>
+                                    </div>
+                                    <div class="sk-item">
+                                        <strong>24%</strong>
+                                        <span>Du bilan total</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="scope-intro-text">
-                            <span class="tag blue" style="margin-bottom:12px;" data-i18n="scope2-tag">Énergie
-                                Importée</span>
-                            <h2 data-i18n="scope2-title">Scope 2 — Énergie Achetée à la STEG</h2>
-                            <p data-i18n="scope2-desc">Émissions <strong>indirectes liées à l'achat
-                                    d'électricité</strong> auprès de la
-                                Société Tunisienne de l'Électricité et du Gaz (STEG). Il s'agit du poste le plus
-                                important du bilan carbone de l'ENSIT (41%), principalement dû à l'éclairage,
-                                aux équipements de laboratoires et aux systèmes de climatisation.</p>
-                            <div class="scope-kpis">
-                                <div class="sk-item">
-                                    <strong>582 tCO₂e</strong>
-                                    <span>Total Scope 2</span>
+                        <div class="glass-card scope-chart-card">
+                            <div class="card-header">
+                                <h3>Consommation Électrique — Scope 2</h3>
+                                <p class="card-desc">Répartition mensuelle de la consommation d'électricité (MWh)
+                                </p>
+                            </div>
+                            <div class="canvas-wrapper large">
+                                <canvas id="scope2Chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="scope-details-grid">
+                            <div class="glass-card scope-chart-card">
+                                <div class="card-header">
+                                    <h3>Consommation par Bâtiment</h3>
+                                    <p class="card-desc">Répartition électrique (MWh / an)</p>
                                 </div>
-                                <div class="sk-item">
-                                    <strong>41%</strong>
-                                    <span>Du bilan total</span>
+                                <div class="canvas-wrapper">
+                                    <canvas id="scope2BuildingChart"></canvas>
                                 </div>
-                                <div class="sk-item">
-                                    <strong>+2.4%</strong>
-                                    <span>vs 2025</span>
+                            </div>
+                            <div class="glass-card scope-chart-card">
+                                <div class="card-header">
+                                    <h3>Pics de Puissance</h3>
+                                    <p class="card-desc">Appel de puissance maximal par mois (kVA)</p>
+                                </div>
+                                <div class="canvas-wrapper">
+                                    <canvas id="powerPeakChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="glass-card scope-chart-card">
+                                <div class="card-header">
+                                    <h3>Usage de l'Énergie</h3>
+                                    <p class="card-desc">Éclairage vs Équipements vs CVC</p>
+                                </div>
+                                <div class="canvas-wrapper">
+                                    <canvas id="lightingEquipmentChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="glass-card scope-chart-card">
+                                <div class="card-header">
+                                    <h3>Performance Énergétique</h3>
+                                    <p class="card-desc">Ratios d'efficacité par service</p>
+                                </div>
+                                <div class="building-list">
+                                    <div class="building-row">
+                                        <div class="br-info"><span class="name">Informatique</span></div>
+                                        <div class="progress-track">
+                                            <div class="progress-fill" style="width: 82%;"></div>
+                                        </div>
+                                        <span class="val">A+</span>
+                                    </div>
+                                    <div class="building-row">
+                                        <div class="br-info"><span class="name">Mécanique</span></div>
+                                        <div class="progress-track">
+                                            <div class="progress-fill" style="width: 64%;"></div>
+                                        </div>
+                                        <span class="val">B</span>
+                                    </div>
+                                    <div class="building-row">
+                                        <div class="br-info"><span class="name">Génie Civil</span></div>
+                                        <div class="progress-track">
+                                            <div class="progress-fill" style="width: 45%;"></div>
+                                        </div>
+                                        <span class="val">C</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card scope-chart-card">
-                        <div class="card-header">
-                            <h3>Consommation Électrique — Scope 2</h3>
-                            <p class="card-desc">Répartition mensuelle de la consommation d'électricité (MWh)
+                </div>
+
+                <!-- ══ Scope 3 Tab ════════════════════ -->
+                <div id="tab-scope3" class="tab-content">
+                    <div class="scope-page">
+                        <div class="scope-intro glass-card">
+                            <div class="scope-intro-icon s3">
+                                <i class="fa-solid fa-truck"></i>
+                            </div>
+                            <div class="scope-intro-text">
+                                <span class="tag"
+                                    style="background:rgba(123,92,240,0.12);color:#7B5CF0;border:1px solid rgba(123,92,240,0.2);margin-bottom:12px;"
+                                    data-i18n="scope3-tag">Impact
+                                    Indirect</span>
+                                <h2 data-i18n="scope3-title">Scope 3 — Émissions Amont & Aval</h2>
+                                <p data-i18n="scope3-desc">Toutes les émissions <strong>indirectes hors Scope 2</strong>
+                                    valeur de l'ENSIT : déplacements domicile-campus des étudiants et enseignants.</p>
+                                <div class="scope-kpis">
+                                    <div class="sk-item">
+                                        <strong>1 199 tCO₂e</strong>
+                                        <span>Impact Mobilité</span>
+                                    </div>
+                                    <div class="sk-item">
+                                        <strong>1 270</strong>
+                                        <span>Étudiants (ENSIT)</span>
+                                    </div>
+                                    <div class="sk-item">
+                                        <strong>215</strong>
+                                        <span>Pers. & Enseignants</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card scope-chart-card">
+                            <div class="card-header">
+                                <h3>Modes de Transport — Mobilité Campus</h3>
+                                <p class="card-desc">Répartition des déplacements domicile-ENSIT (Scope 3)</p>
+                            </div>
+                            <div class="canvas-wrapper large">
+                                <canvas id="transportChart"></canvas>
+                            </div>
+                            <div class="mobility-legend"
+                                style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Facteurs d'Émission
+                                    appliqués :</h4>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-car" style="color:#7B5CF0"></i>
+                                        <span>Voiture seul: <strong>0.21</strong> <small>kg/km</small></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-users" style="color:#1a6dff"></i>
+                                        <span>Covoiturage: <strong>0.10</strong> <small>kg/km</small></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-bus" style="color:#32CD32"></i>
+                                        <span>Bus / Transport: <strong>0.08</strong> <small>kg/km</small></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-motorcycle" style="color:#ff7a45"></i>
+                                        <span>Moto / Scooter: <strong>0.11</strong> <small>kg/km</small></span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+                                        <i class="fa-solid fa-bicycle" style="color:#4d90ff"></i>
+                                        <span>Vélo / Marche: <strong>0.00</strong> <small>kg/km</small></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scope-details-grid">
+                            <div class="glass-card scope-chart-card">
+                                <div class="card-header">
+                                    <h3>Mobilité par Profil</h3>
+                                    <p class="card-desc">Déplacements Personnel vs Étudiants (tCO₂e)</p>
+                                </div>
+                                <div class="canvas-wrapper">
+                                    <canvas id="staffCommutingChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══ Calculator Tab ════════════════ -->
+                <div id="tab-calculator" class="tab-content">
+                    <div class="sim-header">
+                        <div class="tag teal"><i class="fa-solid fa-calculator"></i> <span
+                                data-i18n="nav-calculator">Calculateur</span></div>
+                        <h2 class="sim-title" data-i18n="calc-title">Saisie & Calcul d'Impact</h2>
+                        <p class="sim-desc" data-i18n="calc-desc">Importez vos factures (PDF/Excel) ou saisissez
+                            manuellement vos données de
+                            consommation pour calculer votre empreinte carbone.</p>
+                    </div>
+
+                    <div class="calculator-container">
+                        <div class="calculator-grid">
+                            <!-- Form Column -->
+                            <div class="calc-form-area glass-card">
+                                <div class="calc-section">
+                                    <h4><i class="fa-solid fa-fire-flame-curved"></i> Scope 1 (Direct)</h4>
+                                    <div class="calc-inputs">
+                                        <div class="input-field">
+                                            <label>Gaz Naturel (m³)</label>
+                                            <input type="number" id="calc-gas" value="0" step="10">
+                                        </div>
+                                        <div class="input-field">
+                                            <label>Carburant Flotte (L)</label>
+                                            <input type="number" id="calc-fuel" value="0" step="10">
+                                        </div>
+                                        <div class="input-field">
+                                            <label>Fluides Frigorigènes (kg)</label>
+                                            <input type="number" id="calc-refrig" value="0" step="0.1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="calc-section">
+                                    <h4><i class="fa-solid fa-bolt"></i> Scope 2 (Énergie)</h4>
+                                    <div class="calc-inputs">
+                                        <div class="input-field">
+                                            <label>Électricité STEG (kWh)</label>
+                                            <input type="number" id="calc-elec" value="0" step="100">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="calc-section">
+                                    <h4><i class="fa-solid fa-truck"></i> Scope 3 (Indirect)</h4>
+                                    <div class="calc-inputs">
+                                        <div class="input-field">
+                                            <label>Déplacements Étud. (km)</label>
+                                            <input type="number" id="calc-travel" value="0" step="1000">
+                                        </div>
+                                    </div>
+
+                                    <div class="calc-actions">
+                                        <button class="glass-btn teal" id="btn-calculate-now"
+                                            data-i18n="btn-recalculate">
+                                            <i class="fa-solid fa-rotate"></i> Recalculer
+                                        </button>
+                                        <button class="glass-btn outline" id="btn-reset-calc" data-i18n="btn-reset">
+                                            <i class="fa-solid fa-trash-can"></i> Réinitialiser
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Result Column -->
+                            <div class="calc-result-area glass-card">
+                                <h3 data-i18n="calc-result-title">Résultat du Calcul</h3>
+                                <div class="total-result-pill">
+                                    <span class="val" id="calc-total-val">0.00</span>
+                                    <span class="unit">tCO₂e</span>
+                                </div>
+
+                                <div class="scope-breakdown-mini">
+                                    <div class="sb-row">
+                                        <span>Scope 1</span>
+                                        <strong id="calc-s1-val">0.0 t</strong>
+                                    </div>
+                                    <div class="sb-row">
+                                        <span>Scope 2</span>
+                                        <strong id="calc-s2-val">0.0 t</strong>
+                                    </div>
+                                    <div class="sb-row">
+                                        <span>Scope 3</span>
+                                        <strong id="calc-s3-val">0.0 t</strong>
+                                    </div>
+                                </div>
+
+                                <div class="import-manual glass-card" style="margin-bottom: 20px;">
+                                    <h5><i class="fa-solid fa-file-import"></i> Importation de Factures</h5>
+                                    <p>Importez vos factures (PDF/Excel) pour une extraction automatique.</p>
+                                    <div class="import-btns-grid">
+                                        <button class="glass-btn outline"
+                                            onclick="document.getElementById('file-import-pdf').click()">
+                                            <i class="fa-solid fa-file-pdf"></i> Upload PDF
+                                        </button>
+                                        <button class="glass-btn outline"
+                                            onclick="document.getElementById('file-import-excel').click()">
+                                            <i class="fa-solid fa-file-excel"></i> Upload Excel
+                                        </button>
+                                    </div>
+                                    <input type="file" id="file-import-pdf" accept=".pdf" style="display:none">
+                                    <input type="file" id="file-import-excel" accept=".xlsx,.xls" style="display:none">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══ Simulation Tab ════════════════ -->
+                <div id="tab-simulation" class="tab-content">
+                    <div class="sim-header">
+                        <div class="tag teal"><i class="fa-solid fa-wand-magic-sparkles"></i> IA Prédictive</div>
+                        <h2 class="sim-title">Simulation de Décarbonation</h2>
+                        <p class="sim-desc">Modélisez l'impact de différentes mesures d'amélioration sur le bilan
+                            carbone de l'ENSIT. Ajustez les paramètres et visualisez en temps réel la réduction
+                            potentielle des émissions selon les scénarios envisagés.</p>
+                    </div>
+
+                    <div class="simulation-grid">
+                        <div class="sim-panel glass-card">
+                            <h3><i class="fa-solid fa-sliders"></i> Leviers de Réduction</h3>
+                            <p class="sim-panel-desc">Simulez trois leviers d'action envisageables pour l'ENSIT. Le
+                                modèle IA estime la réduction d'émissions associée à chaque mesure sur la base des
+                                données réelles de consommation.</p>
+
+                            <div class="slider-group">
+                                <div class="label-row">
+                                    <div class="slider-info">
+                                        <i class="fa-solid fa-sun" style="color:#fbbf24"></i>
+                                        <span>Panneaux Solaires (toitures ENSIT)</span>
+                                    </div>
+                                    <span class="val" id="solar-val">0 m²</span>
+                                </div>
+                                <input type="range" min="0" max="5000" value="0" class="sim-slider" id="solar-slider">
+                                <p class="slider-hint">Installation de panneaux photovoltaïques sur les toitures des
+                                    bâtiments A, B, C et D de l'ENSIT</p>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="label-row">
+                                    <div class="slider-info">
+                                        <i class="fa-solid fa-wind" style="color:#60a5fa"></i>
+                                        <span>Amélioration Heating, Ventilation, Air Conditioning</span>
+                                    </div>
+                                    <span class="val" id="hvac-val">0 %</span>
+                                </div>
+                                <input type="range" min="0" max="50" value="0" class="sim-slider" id="hvac-slider">
+                                <p class="slider-hint">Remplacement ou optimisation des systèmes de climatisation et
+                                    ventilation des salles de cours et laboratoires</p>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="label-row">
+                                    <div class="slider-info">
+                                        <i class="fa-solid fa-recycle" style="color:#4ade80"></i>
+                                        <span>Recyclage & Compostage</span>
+                                    </div>
+                                    <span class="val" id="waste-val">62 %</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="62" class="sim-slider" id="waste-slider">
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="label-row">
+                                    <div class="slider-info">
+                                        <i class="fa-solid fa-bolt" style="color:#7B5CF0"></i>
+                                        <span>Électromobilité (Bornes)</span>
+                                    </div>
+                                    <span class="val" id="ev-val">0</span>
+                                </div>
+                                <input type="range" min="0" max="50" value="0" class="sim-slider" id="ev-slider">
+                                <p class="slider-hint">Installation de bornes de recharge pour encourager la mobilité
+                                    électrique à l'ENSIT</p>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="label-row">
+                                    <div class="slider-info">
+                                        <i class="fa-solid fa-leaf" style="color:#22c55e"></i>
+                                        <span>Végétalisation du Campus</span>
+                                    </div>
+                                    <span class="val" id="green-val">10 %</span>
+                                </div>
+                                <input type="range" min="10" max="40" value="10" class="sim-slider" id="green-slider">
+                                <p class="slider-hint">Augmentation de la surface végétalisée pour la séquestration
+                                    carbone locale</p>
+                            </div>
+                        </div>
+
+                        <div class="sim-result glass-card">
+                            <div class="result-header">
+                                <h3>Projection de Réduction</h3>
+                            </div>
+                            <p class="sim-result-desc">Réduction annuelle estimée si tous les paramètres sont appliqués.
                             </p>
-                        </div>
-                        <div class="canvas-wrapper large">
-                            <canvas id="scope2Chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="scope-details-grid">
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Consommation par Bâtiment</h3>
-                                <p class="card-desc">Répartition électrique (MWh / an)</p>
+                            <div class="big-result" id="reduction-total"
+                                style="color: var(--accent-teal); font-weight: 800; font-size: 2.5rem; margin: 15px 0;">
+                                - 0.0 <small>tCO₂e/an</small>
+                            </div>
+                            <div class="reduction-breakdown"
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                                <div class="rb-item">
+                                    <span><i class="fa-solid fa-sun" style="color:#fbbf24"></i> Solaire</span>
+                                    <strong id="solar-reduction">— 0 t</strong>
+                                </div>
+                                <div class="rb-item">
+                                    <span><i class="fa-solid fa-wind" style="color:#60a5fa"></i> HVAC</span>
+                                    <strong id="hvac-reduction">— 0 t</strong>
+                                </div>
+                                <div class="rb-item">
+                                    <span><i class="fa-solid fa-bolt" style="color:#7B5CF0"></i> EV</span>
+                                    <strong id="ev-reduction">— 0 t</strong>
+                                </div>
+                                <div class="rb-item">
+                                    <span><i class="fa-solid fa-leaf" style="color:#22c55e"></i> Green</span>
+                                    <strong id="green-reduction">— 0 t</strong>
+                                </div>
                             </div>
                             <div class="canvas-wrapper">
-                                <canvas id="scope2BuildingChart"></canvas>
+                                <canvas id="projectionChart"></canvas>
                             </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Pics de Puissance</h3>
-                                <p class="card-desc">Appel de puissance maximal par mois (kVA)</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="powerPeakChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Usage de l'Énergie</h3>
-                                <p class="card-desc">Éclairage vs Équipements vs CVC</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="lightingEquipmentChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Performance Énergétique</h3>
-                                <p class="card-desc">Ratios d'efficacité par service</p>
-                            </div>
-                            <div class="building-list">
-                                <div class="building-row">
-                                    <div class="br-info"><span class="name">Informatique</span></div>
-                                    <div class="progress-track">
-                                        <div class="progress-fill" style="width: 82%;"></div>
-                                    </div>
-                                    <span class="val">A+</span>
-                                </div>
-                                <div class="building-row">
-                                    <div class="br-info"><span class="name">Mécanique</span></div>
-                                    <div class="progress-track">
-                                        <div class="progress-fill" style="width: 64%;"></div>
-                                    </div>
-                                    <span class="val">B</span>
-                                </div>
-                                <div class="building-row">
-                                    <div class="br-info"><span class="name">Génie Civil</span></div>
-                                    <div class="progress-track">
-                                        <div class="progress-fill" style="width: 45%;"></div>
-                                    </div>
-                                    <span class="val">C</span>
-                                </div>
+
+                            <div class="smart-tips glass-card"
+                                style="margin-top: 20px; padding: 15px; border-color: rgba(26, 109, 255, 0.2); background: rgba(26, 109, 255, 0.05);">
+                                <h4
+                                    style="font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-lightbulb" style="color: #fbbf24;"></i> Recommandations IA
+                                </h4>
+                                <ul
+                                    style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 20px; line-height: 1.6;">
+                                    <li>Prioriser le <strong>Département Mécanique</strong> pour l'installation solaire
+                                        (plus grande surface disponible).</li>
+                                    <li>Le remplacement des climatiseurs au <strong>Dép. Informatique</strong> réduirait
+                                        les
+                                        émissions du Scope 2 de 12%.</li>
+                                    <li>L'optimisation du recyclage peut réduire l'impact du Scope 3 de 15tCO2e/an.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ══ Scope 3 Tab ════════════════════ -->
-            <div id="tab-scope3" class="tab-content">
-                <div class="scope-page">
-                    <div class="scope-intro glass-card">
-                        <div class="scope-intro-icon s3">
-                            <i class="fa-solid fa-truck"></i>
+                <div id="tab-admin" class="tab-content">
+                    <div class="sim-header">
+                        <div class="tag blue"><i class="fa-solid fa-users-gear"></i> Administration</div>
+                        <h2 class="sim-title">Gestion de la Plateforme</h2>
+                        <p class="sim-desc">Supervision des utilisateurs, sécurité et paramètres du système eco² ENSIT.
+                        </p>
+                    </div>
+
+                    <div class="admin-stats-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                        <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div
+                                style="width: 50px; height: 50px; border-radius: 12px; background: rgba(26, 109, 255, 0.1); color: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.8rem; opacity: 0.7;">Total Utilisateurs</h4>
+                                <strong style="font-size: 1.4rem;">14</strong>
+                            </div>
                         </div>
-                        <div class="scope-intro-text">
-                            <span class="tag"
-                                style="background:rgba(123,92,240,0.12);color:#7B5CF0;border:1px solid rgba(123,92,240,0.2);margin-bottom:12px;"
-                                data-i18n="scope3-tag">Impact
-                                Indirect</span>
-                            <h2 data-i18n="scope3-title">Scope 3 — Émissions Amont & Aval</h2>
-                            <p data-i18n="scope3-desc">Toutes les émissions <strong>indirectes hors Scope 2</strong>
-                                dans la chaîne de
-                                valeur de l'ENSIT : déplacements domicile-campus des étudiants et enseignants,
-                                voyages académiques, achats de fournitures et équipements pédagogiques,
-                                traitement des déchets solides et consommation d'eau.</p>
-                            <div class="scope-kpis">
-                                <div class="sk-item">
-                                    <strong>526 tCO₂e</strong>
-                                    <span>Total Scope 3</span>
-                                </div>
-                                <div class="sk-item">
-                                    <strong>37%</strong>
-                                    <span>Du bilan total</span>
-                                </div>
-                                <div class="sk-item">
-                                    <strong>-1.8%</strong>
-                                    <span>vs 2025</span>
-                                </div>
+                        <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div
+                                style="width: 50px; height: 50px; border-radius: 12px; background: rgba(50, 205, 50, 0.1); color: var(--accent-teal); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.8rem; opacity: 0.7;">Intégrité des Données</h4>
+                                <strong style="font-size: 1.4rem;">99.8%</strong>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div
+                                style="width: 50px; height: 50px; border-radius: 12px; background: rgba(123, 92, 240, 0.1); color: var(--accent-purple); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.8rem; opacity: 0.7;">Uptime Système</h4>
+                                <strong style="font-size: 1.4rem;">99.9%</strong>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card scope-chart-card">
-                        <div class="card-header">
-                            <h3>Modes de Transport — Mobilité Campus</h3>
-                            <p class="card-desc">Répartition des déplacements domicile-ENSIT (Scope 3)</p>
-                        </div>
-                        <div class="canvas-wrapper large">
-                            <canvas id="transportChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="scope-details-grid">
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Gestion des Déchets</h3>
-                                <p class="card-desc">Répartition par filière de traitement (t)</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="wasteBreakdownChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Mobilité par Profil</h3>
-                                <p class="card-desc">Déplacements Personnel vs Étudiants (tCO₂e)</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="staffCommutingChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Consommation d'Eau</h3>
-                                <p class="card-desc">Évolution mensuelle de la consommation (m³)</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="waterConsumptionChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="glass-card scope-chart-card">
-                            <div class="card-header">
-                                <h3>Achats & Services</h3>
-                                <p class="card-desc">Impact carbone des fournitures pédagogiques</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <canvas id="purchasesChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass-card scope-chart-card">
-                        <div class="card-header">
-                            <h3>Sources Scope 3 — Détail</h3>
-                            <p class="card-desc">Décomposition des émissions indirectes par catégorie</p>
-                        </div>
-                        <div class="canvas-wrapper large">
-                            <canvas id="scope3Chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- ══ Calculator Tab ════════════════ -->
-            <div id="tab-calculator" class="tab-content">
-                <div class="sim-header">
-                    <div class="tag teal"><i class="fa-solid fa-calculator"></i> <span
-                            data-i18n="nav-calculator">Calculateur</span></div>
-                    <h2 class="sim-title" data-i18n="calc-title">Saisie & Calcul d'Impact</h2>
-                    <p class="sim-desc" data-i18n="calc-desc">Importez vos factures (PDF/Excel) ou saisissez
-                        manuellement vos données de
-                        consommation pour calculer votre empreinte carbone.</p>
-                </div>
+                    <div class="bento-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                        <div class="bento-item glass-card" style="padding: 25px;">
+                            <div class="card-header"
+                                style="display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <h3><i class="fa-solid fa-user-shield"></i> Contrôle d'Accès</h3>
+                                    <p class="card-desc">Gestion des permissions par rôle</p>
+                                </div>
+                                <button class="glass-btn teal"><i class="fa-solid fa-user-plus"></i> Nouvel
+                                    Utilisateur</button>
+                            </div>
+                            <div class="table-wrapper" style="margin-top:20px;">
+                                <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr
+                                            style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; font-size: 0.85rem;">
+                                            <th style="padding: 12px;">Utilisateur</th>
+                                            <th style="padding: 12px;">Rôle</th>
+                                            <th style="padding: 12px;">Dernière Connexion</th>
+                                            <th style="padding: 12px;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="font-size: 0.9rem; color: var(--text-secondary);">
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <td style="padding: 12px;"><strong>Admin
+                                                    ENSIT</strong><br><small>admin@ensit.tn</small></td>
+                                            <td style="padding: 12px;"><span class="tag teal">Admin</span></td>
+                                            <td style="padding: 12px;">Aujourd'hui, 09:12</td>
+                                            <td style="padding: 12px;"><button class="glass-btn outline"
+                                                    style="padding:5px;"><i class="fa-solid fa-ellipsis"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <td style="padding: 12px;"><strong>Directeur
+                                                    Énergie</strong><br><small>energy@ensit.tn</small></td>
+                                            <td style="padding: 12px;"><span class="tag blue">Gestionnaire</span></td>
+                                            <td style="padding: 12px;">Hier, 16:45</td>
+                                            <td style="padding: 12px;"><button class="glass-btn outline"
+                                                    style="padding:5px;"><i class="fa-solid fa-ellipsis"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                <div class="calculator-container">
-                    <div class="calculator-grid">
-                        <!-- Form Column -->
-                        <div class="calc-form-area glass-card">
-                            <div class="calc-section">
-                                <h4><i class="fa-solid fa-fire-flame-curved"></i> Scope 1 (Direct)</h4>
-                                <div class="calc-inputs">
-                                    <div class="input-field">
-                                        <label>Gaz Naturel (m³)</label>
-                                        <input type="number" id="calc-gas" value="0" step="10">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Carburant Flotte (L)</label>
-                                        <input type="number" id="calc-fuel" value="0" step="10">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Fluides Frigorigènes (kg)</label>
-                                        <input type="number" id="calc-refrig" value="0" step="0.1">
-                                    </div>
+                        <div class="bento-item glass-card" style="padding: 25px;">
+                            <h3><i class="fa-solid fa-list-ul"></i> Activité Récente</h3>
+                            <div class="activity-log" style="margin-top: 15px;">
+                                <div class="activity-item"
+                                    style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <p style="font-size: 0.85rem; margin-bottom: 3px;"><strong>Calcul</strong> mis à
+                                        jour</p>
+                                    <small style="opacity: 0.5;">Il y a 5 min par Admin</small>
+                                </div>
+                                <div class="activity-item"
+                                    style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <p style="font-size: 0.85rem; margin-bottom: 3px;"><strong>Simulation</strong>
+                                        "Solaire Bât B"</p>
+                                    <small style="opacity: 0.5;">Il y a 1 heure par Energy</small>
+                                </div>
+                                <div class="activity-item" style="padding: 10px 0;">
+                                    <p style="font-size: 0.85rem; margin-bottom: 3px;"><strong>Nouvel import</strong>
+                                        Excel</p>
+                                    <small style="opacity: 0.5;">Hier, 14:20 par Admin</small>
                                 </div>
                             </div>
-
-                            <div class="calc-section">
-                                <h4><i class="fa-solid fa-bolt"></i> Scope 2 (Énergie)</h4>
-                                <div class="calc-inputs">
-                                    <div class="input-field">
-                                        <label>Électricité STEG (kWh)</label>
-                                        <input type="number" id="calc-elec" value="0" step="100">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="calc-section">
-                                <h4><i class="fa-solid fa-truck"></i> Scope 3 (Indirect)</h4>
-                                <div class="calc-inputs">
-                                    <div class="input-field">
-                                        <label>Déplacements Étud. (km)</label>
-                                        <input type="number" id="calc-travel" value="0" step="1000">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Déchets Solides (t)</label>
-                                        <input type="number" id="calc-waste" value="0" step="1">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Consommation Eau (m³)</label>
-                                        <input type="number" id="calc-water" value="0" step="10">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="calc-actions">
-                                <button class="glass-btn teal" id="btn-calculate-now" data-i18n="btn-recalculate">
-                                    <i class="fa-solid fa-rotate"></i> Recalculer
-                                </button>
-                                <button class="glass-btn outline" id="btn-reset-calc" data-i18n="btn-reset">
-                                    <i class="fa-solid fa-trash-can"></i> Réinitialiser
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Result Column -->
-                        <div class="calc-result-area glass-card">
-                            <h3 data-i18n="calc-result-title">Résultat du Calcul</h3>
-                            <div class="total-result-pill">
-                                <span class="val" id="calc-total-val">0.00</span>
-                                <span class="unit">tCO₂e</span>
-                            </div>
-
-                            <div class="scope-breakdown-mini">
-                                <div class="sb-row">
-                                    <span>Scope 1</span>
-                                    <strong id="calc-s1-val">0.0 t</strong>
-                                </div>
-                                <div class="sb-row">
-                                    <span>Scope 2</span>
-                                    <strong id="calc-s2-val">0.0 t</strong>
-                                </div>
-                                <div class="sb-row">
-                                    <span>Scope 3</span>
-                                    <strong id="calc-s3-val">0.0 t</strong>
-                                </div>
-                            </div>
-
-                            <div class="import-manual glass-card" style="margin-bottom: 20px;">
-                                <h5><i class="fa-solid fa-file-import"></i> Importation de Factures</h5>
-                                <p>Importez vos factures d'électricité (STEG), de gaz ou de carburant au format PDF ou
-                                    Excel.</p>
-                                <div class="import-btns-grid">
-                                    <button class="glass-btn outline"
-                                        onclick="document.getElementById('file-import-pdf').click()">
-                                        <i class="fa-solid fa-file-pdf"></i> Upload PDF
-                                    </button>
-                                    <button class="glass-btn outline"
-                                        onclick="document.getElementById('file-import-excel').click()">
-                                        <i class="fa-solid fa-file-excel"></i> Upload Excel
-                                    </button>
-                                </div>
-                                <input type="file" id="file-import-pdf" accept=".pdf" style="display:none">
-                                <input type="file" id="file-import-excel" accept=".xlsx,.xls" style="display:none">
-                            </div>
-
-                            <div class="manual-invoice-form glass-card">
-                                <h5><i class="fa-solid fa-pen-to-square"></i> Saisie Manuelle de Facture</h5>
-                                <div class="calc-inputs" style="grid-template-columns: 1fr;">
-                                    <div class="input-field">
-                                        <label>Type de Facture</label>
-                                        <select id="invoice-type" class="glass-select">
-                                            <option value="elec">Électricité (STEG)</option>
-                                            <option value="gas">Gaz Naturel</option>
-                                            <option value="fuel">Carburant / Fioul</option>
-                                            <option value="water">Eau</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Montant Facture (TND)</label>
-                                        <input type="number" id="invoice-amount" placeholder="Ex: 1250.500">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Consommation (selon unité)</label>
-                                        <input type="number" id="invoice-usage" placeholder="Ex: 1500 kWh">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Date de Facture</label>
-                                        <input type="date" id="invoice-date">
-                                    </div>
-                                </div>
-                                <button class="glass-btn teal" style="width:100%; margin-top:15px;"
-                                    id="btn-add-invoice">
-                                    <i class="fa-solid fa-plus"></i> Ajouter à la Liste
-                                </button>
-                            </div>
+                            <button class="glass-btn outline" style="width: 100%; margin-top: 20px;">Voir tout le
+                                journal</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ══ Simulation Tab ════════════════ -->
-            <div id="tab-simulation" class="tab-content">
-                <div class="sim-header">
-                    <div class="tag teal"><i class="fa-solid fa-wand-magic-sparkles"></i> IA Prédictive</div>
-                    <h2 class="sim-title">Simulation de Décarbonation</h2>
-                    <p class="sim-desc">Modélisez l'impact de différentes mesures d'amélioration sur le bilan
-                        carbone de l'ENSIT. Ajustez les paramètres et visualisez en temps réel la réduction
-                        potentielle des émissions selon les scénarios envisagés.</p>
-                </div>
-
-                <div class="simulation-grid">
-                    <div class="sim-panel glass-card">
-                        <h3><i class="fa-solid fa-sliders"></i> Leviers de Réduction</h3>
-                        <p class="sim-panel-desc">Simulez trois leviers d'action envisageables pour l'ENSIT. Le
-                            modèle IA estime la réduction d'émissions associée à chaque mesure sur la base des
-                            données réelles de consommation.</p>
-
-                        <div class="slider-group">
-                            <div class="label-row">
-                                <div class="slider-info">
-                                    <i class="fa-solid fa-sun" style="color:#fbbf24"></i>
-                                    <span>Panneaux Solaires (toitures ENSIT)</span>
-                                </div>
-                                <span class="val" id="solar-val">0 m²</span>
-                            </div>
-                            <input type="range" min="0" max="5000" value="0" class="sim-slider" id="solar-slider">
-                            <p class="slider-hint">Installation de panneaux photovoltaïques sur les toitures des
-                                bâtiments A, B, C et D de l'ENSIT</p>
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="label-row">
-                                <div class="slider-info">
-                                    <i class="fa-solid fa-wind" style="color:#60a5fa"></i>
-                                    <span>Amélioration HVAC (climatisation)</span>
-                                </div>
-                                <span class="val" id="hvac-val">0 %</span>
-                            </div>
-                            <input type="range" min="0" max="50" value="0" class="sim-slider" id="hvac-slider">
-                            <p class="slider-hint">Remplacement ou optimisation des systèmes de climatisation et
-                                ventilation des salles de cours et laboratoires</p>
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="label-row">
-                                <div class="slider-info">
-                                    <i class="fa-solid fa-recycle" style="color:#4ade80"></i>
-                                    <span>Recyclage des déchets du campus</span>
-                                </div>
-                                <span class="val" id="waste-val">62 %</span>
-                            </div>
-                            <input type="range" min="0" max="100" value="62" class="sim-slider" id="waste-slider">
-                            <p class="slider-hint">Part des déchets solides du campus valorisés ou recyclés
-                                (papier, plastique, équipements électroniques)</p>
-                        </div>
-                    </div>
-
-                    <div class="sim-result glass-card">
-                        <div class="result-header">
-                            <h3>Projection de Réduction</h3>
-                            <div class="confidence-badge">
-                                <i class="fa-solid fa-brain"></i> Confiance IA : 94.2%
-                            </div>
-                        </div>
-                        <p class="sim-result-desc">Réduction annuelle estimée si tous les paramètres sont
-                            appliqués simultanément.</p>
-                        <div class="big-result" id="reduction-total">
-                            - 0.0 <small>tCO₂e/an</small>
-                        </div>
-                        <div class="reduction-breakdown">
-                            <div class="rb-item">
-                                <span><i class="fa-solid fa-sun" style="color:#fbbf24"></i> Solaire</span>
-                                <strong id="solar-reduction">— 0 t</strong>
-                            </div>
-                            <div class="rb-item">
-                                <span><i class="fa-solid fa-wind" style="color:#60a5fa"></i> HVAC</span>
-                                <strong id="hvac-reduction">— 0 t</strong>
-                            </div>
-                            <div class="rb-item">
-                                <span><i class="fa-solid fa-recycle" style="color:#4ade80"></i> Déchets</span>
-                                <strong id="waste-reduction">— 0 t</strong>
-                            </div>
-                        </div>
-                        <div class="canvas-wrapper">
-                            <canvas id="projectionChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    </div><!-- /content-body -->
-    </main>
+            </div><!-- /content-body -->
+        </main>
     </div>
 
     <script src="dashboard.js"></script>

@@ -638,6 +638,32 @@
 .canvas-wrapper {
   height: 220px;
   margin-top: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.canvas-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.canvas-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.canvas-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(26, 109, 255, 0.2);
+  border-radius: 10px;
+}
+
+.canvas-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 109, 255, 0.4);
+}
+
+.canvas-wrapper .chart-container {
+  min-width: 2500px; /* Enlarge space between months */
+  height: 100%;
 }
 
 .canvas-wrapper.large {
@@ -677,11 +703,29 @@
 }
 
 .building-row .name {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.dept-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.equip-info {
+  font-size: 0.65rem;
+  color: var(--accent-teal);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.equip-info i {
+  font-size: 0.6rem;
 }
 
 .progress-track {
@@ -1534,4 +1578,179 @@
   .hero-visual-db {
     display: none;
   }
+}
+
+/* ── Interactive Components ─────────────────────────── */
+
+/* Dropdown Panel */
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  max-height: 400px;
+  z-index: 1000;
+  padding: 0;
+  display: none;
+  animation: slideInDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.dropdown-panel.active {
+  display: block;
+}
+
+.dp-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--grid);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.dp-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dp-item {
+  padding: 16px 20px;
+  display: flex;
+  gap: 15px;
+  transition: background 0.2s;
+  cursor: pointer;
+  border-bottom: 1px solid var(--grid);
+}
+
+.dp-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.dp-item i {
+  margin-top: 4px;
+  font-size: 1.1rem;
+}
+
+.dp-item strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.dp-item p {
+  font-size: 0.75rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.dp-footer {
+  padding: 12px;
+  text-align: center;
+}
+
+.dp-footer a {
+  font-size: 0.8rem;
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Modal System */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.close-modal:hover {
+  opacity: 1;
+}
+
+.settings-group {
+  margin-bottom: 20px;
+}
+
+.settings-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.glass-slider {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  appearance: none;
+}
+
+.glass-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--blue);
+}
+
+.val-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--teal);
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }

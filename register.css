@@ -2,14 +2,15 @@
 
 /* Right panel: allow scroll but keep compact */
 .reg-right {
-  padding: 16px 40px;
+  padding: 30px 30px;
   overflow-y: auto;
 }
 
 /* Smaller form box */
 .reg-box {
   max-width: 500px;
-  padding: 28px 32px;
+  padding: 30px 30px;
+  align-items: center;
 }
 
 /* Compact header */
@@ -42,6 +43,9 @@
   height: 40px;
   font-size: 0.82rem;
   padding: 0 12px 0 36px;
+  align-items: center;
+  background: #0d1540;
+  color: white;
 }
 
 .reg-box .field-icon {
@@ -72,6 +76,8 @@
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 32px !important;
+  color: white !important;
+  background-color: #0d1540 !important;
 }
 
 .glass-select option {
@@ -89,7 +95,7 @@
 /* Password strength bar */
 .pwd-strength-bar {
   height: 3px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 100px;
   margin-top: -6px;
   margin-bottom: 4px;
@@ -132,17 +138,18 @@
   color: #fff;
   font-weight: 600;
   border: none;
-  box-shadow: 0 4px 20px rgba(26,109,255,0.35);
+  box-shadow: 0 4px 20px rgba(26, 109, 255, 0.35);
 }
 
 .reg-box .submit-btn:hover {
   background: linear-gradient(135deg, #2478ff, #5c9dff);
-  box-shadow: 0 8px 28px rgba(26,109,255,0.5);
+  box-shadow: 0 8px 28px rgba(26, 109, 255, 0.5);
   transform: translateY(-2px);
 }
 
 /* Alert / Success banners */
-.form-alert, .form-success {
+.form-alert,
+.form-success {
   padding: 9px 13px;
   font-size: 0.78rem;
   margin-bottom: 12px;
@@ -160,7 +167,10 @@
   animation: fadeIn 0.3s ease;
 }
 
-.form-success i { font-size: 0.95rem; flex-shrink: 0; }
+.form-success i {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
 
 /* Footer links */
 .reg-box .lb-footer {
@@ -170,17 +180,30 @@
 
 .reg-box .lb-footer p {
   font-size: 0.77rem;
+  align-items: center;
 }
 
 /* Security badge */
 .reg-right .security-badge {
-  font-size: 0.68rem;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
+
 
 /* Responsive */
 @media (max-width: 700px) {
-  .field-row-2  { grid-template-columns: 1fr; }
-  .reg-right    { padding: 20px 16px; }
-  .reg-box      { padding: 24px 20px; }
+  .field-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .reg-right {
+    padding: 20px 16px;
+  }
+
+  .reg-box {
+    padding: 24px 20px;
+  }
 }
